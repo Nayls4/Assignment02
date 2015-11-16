@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 
 /**
- *
+ * 
  * @author naylj6470
  */
 public class Recurssion {
@@ -51,9 +51,37 @@ public class Recurssion {
         }
     
     
+    public int marble(int[] bags, int max){
+        if(bags.length == 0){
+            return 0;
+        }
+        int[] leftovers = new int[bags.length - 1];
+        int aBag = bags[0];
+        for(int i=0; i<leftovers.length; i++){
+            leftovers[i] = bags[i+1];
+            }
+        int with = aBag + marble(leftovers,max-aBag);
+        int without = marble(leftovers,max);
+        if(with>without && with<=max){
+            return with;
+        }else if(without>with && without<=max){
+            return without;
+        }else{
+            return 0;
+        }
+    }   
     
     
-    
+    public boolean isPalindrome(String s){
+        if(s.length() <= 1){
+            return true;
+        }
+        if(s.charAt(0)==s.charAt(s.length()-1)){
+            return isPalindrome(s.substring(1,s.length()-1));
+        }else{
+            return false;
+        }
+    }
     
     
     
@@ -61,16 +89,19 @@ public class Recurssion {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        
-        System.out.println(sumDigits(n));
-        
+//        Scanner input = new Scanner(System.in);
+//        int n = input.nextInt();
+//        
+//        System.out.println(sumDigits(n));
+//        
 //        
 //        System.out.println(126%10);
 //        System.out.println(12/10);
 //        System.out.println(12%10);
+//        System.out.println(isPalindrome(racecar));
         
         
     }
+
+    
 }
